@@ -984,6 +984,17 @@ button:hover {
     font-size: 14px;
   }
   
+  /* Hide save and load buttons on mobile */
+  .save-button,
+  .load-button {
+    display: none;
+  }
+  
+  /* Make share button full width when it's alone */
+  .share-button {
+    grid-column: 1 / -1;
+  }
+  
   .empty-spacer {
     display: none;
   }
