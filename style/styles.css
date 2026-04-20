@@ -632,7 +632,7 @@ input[type="range"]::-moz-range-thumb:hover {
 }
 
 .circle-combination-item.two-circles {
-  gap: 20px;
+  gap: 10px;
   min-height: 100px;
 }
 
@@ -668,20 +668,20 @@ input[type="range"]::-moz-range-thumb:hover {
 /* Triangle layout for 3 circles */
 .circle-combination-item.three-circles .circle-swatch:nth-child(1) {
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .circle-combination-item.three-circles .circle-swatch:nth-child(2) {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: 10px;
 }
 
 .circle-combination-item.three-circles .circle-swatch:nth-child(3) {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   right: 10px;
 }
 
