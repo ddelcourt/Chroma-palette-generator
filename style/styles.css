@@ -159,6 +159,23 @@ h1 {
   margin-bottom: 4px;
 }
 
+.menu-button-item {
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.menu-button-item + .menu-item {
+  border-top: 1px solid var(--border-color);
+  margin-top: 8px;
+  padding-top: 16px;
+}
+
 .subtitle {
   color: var(--text-secondary);
   margin-bottom: 5px;
@@ -762,18 +779,6 @@ button:hover {
   background: var(--border-color);
 }
 
-.theme-toggle-inline {
-  background: var(--bg-tertiary);
-  border: none;
-  padding: 12px 24px;
-  font-size: 14px;
-  color: var(--text-primary);
-}
-
-.theme-toggle-inline:hover {
-  background: var(--border-color);
-}
-
 .share-button,
 .save-button,
 .load-button {
@@ -866,10 +871,6 @@ button:hover {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
-  
-  .theme-toggle-inline {
-    grid-column: 1 / -1;
-  }
 }
 
 /* Mobile - single column layout with flexbox */
@@ -931,21 +932,38 @@ button:hover {
   
   .control-group {
     width: 100%;
+    position: relative;
+    padding-bottom: 5px;
   }
   
   .control-group label {
     font-size: 12px;
     height: auto;
     white-space: normal;
+    display: block;
+    padding-right: 50px;
   }
   
   .slider-container {
-    gap: 6px;
+    margin-top: 8px;
+    gap: 0;
+    display: block;
   }
   
   .slider-value {
+    position: absolute;
+    top: 0;
+    right: 0;
     font-size: 14px;
     font-weight: bold;
+    text-align: right;
+    min-width: 40px;
+    line-height: 1.2;
+  }
+  
+  .control-group input[type="range"] {
+    width: 100%;
+    display: block;
   }
   
   .control-group button {
@@ -955,8 +973,8 @@ button:hover {
   }
   
   .button-row {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
   

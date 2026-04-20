@@ -190,15 +190,15 @@ function randomizeAll() {
 
 function toggleTheme() {
   const root = document.documentElement;
-  const themeButton = document.querySelector('.theme-toggle-inline');
+  const themeButton = document.querySelector('.menu-button-item');
   
   if (root.classList.contains('light-theme')) {
     root.classList.remove('light-theme');
-    themeButton.textContent = 'Light Mode';
+    themeButton.textContent = '🌙 Light Mode';
     localStorage.setItem('theme', 'dark');
   } else {
     root.classList.add('light-theme');
-    themeButton.textContent = 'Dark Mode';
+    themeButton.textContent = '☀️ Dark Mode';
     localStorage.setItem('theme', 'light');
   }
 }

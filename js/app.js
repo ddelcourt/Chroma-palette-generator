@@ -7,11 +7,11 @@
 window.addEventListener('load', () => {
   const savedTheme = localStorage.getItem('theme');
   const root = document.documentElement;
-  const themeButton = document.querySelector('.theme-toggle-inline');
+  const themeButton = document.querySelector('.menu-button-item');
   
   if (savedTheme === 'light') {
     root.classList.add('light-theme');
-    themeButton.textContent = 'Dark Mode';
+    themeButton.textContent = '☀️ Dark Mode';
   }
   
   // Check if there's a shared URL
