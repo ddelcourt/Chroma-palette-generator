@@ -1,0 +1,305 @@
+/* ============================================================================
+   DOCUMENTATION STYLES — Swiss Typography
+   Clean, minimal, straight design
+   ============================================================================ */
+
+:root {
+  --doc-bg: #ffffff;
+  --doc-text: #1a1a1a;
+  --doc-accent: #0066cc;
+  --doc-border: #e0e0e0;
+  --doc-code-bg: #f5f5f5;
+  --doc-heading: #000000;
+  --doc-link: #0066cc;
+  --doc-link-hover: #004499;
+  --doc-max-width: 800px;
+  --doc-spacing: 1.5rem;
+}
+
+:root.dark-theme {
+  --doc-bg: #0a0a0a;
+  --doc-text: #e0e0e0;
+  --doc-accent: #4a9eff;
+  --doc-border: #2a2a2a;
+  --doc-code-bg: #1a1a1a;
+  --doc-heading: #ffffff;
+  --doc-link: #4a9eff;
+  --doc-link-hover: #7bb8ff;
+}
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Typography — Swiss Style */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--doc-text);
+  background: var(--doc-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Container */
+.docs-container {
+  max-width: var(--doc-max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Header */
+.docs-header {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--doc-border);
+  padding-bottom: 1.5rem;
+}
+
+.docs-nav {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-link {
+  color: var(--doc-link);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--doc-link-hover);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--doc-border);
+  color: var(--doc-text);
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.theme-toggle:hover {
+  background: var(--doc-code-bg);
+  border-color: var(--doc-accent);
+}
+
+.docs-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--doc-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Content */
+.docs-content {
+  line-height: 1.7;
+}
+
+/* Headings */
+.docs-content h1,
+.docs-content h2,
+.docs-content h3,
+.docs-content h4,
+.docs-content h5,
+.docs-content h6 {
+  font-weight: 700;
+  color: var(--doc-heading);
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.docs-content h1 {
+  font-size: 2rem;
+  margin-top: 0;
+  border-bottom: 2px solid var(--doc-border);
+  padding-bottom: 0.5rem;
+}
+
+.docs-content h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--doc-border);
+  padding-bottom: 0.3rem;
+}
+
+.docs-content h3 {
+  font-size: 1.25rem;
+}
+
+.docs-content h4 {
+  font-size: 1.1rem;
+}
+
+.docs-content h5,
+.docs-content h6 {
+  font-size: 1rem;
+}
+
+/* Paragraphs */
+.docs-content p {
+  margin-bottom: 1.25rem;
+}
+
+/* Links */
+.docs-content a {
+  color: var(--doc-link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.docs-content a:hover {
+  border-bottom-color: var(--doc-link);
+}
+
+/* Lists */
+.docs-content ul,
+.docs-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 2rem;
+}
+
+.docs-content li {
+  margin-bottom: 0.5rem;
+}
+
+.docs-content li > ul,
+.docs-content li > ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Code */
+.docs-content code {
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 0.9em;
+  background: var(--doc-code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+.docs-content pre {
+  background: var(--doc-code-bg);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--doc-border);
+}
+
+.docs-content pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.85rem;
+}
+
+/* Blockquotes */
+.docs-content blockquote {
+  border-left: 3px solid var(--doc-accent);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: #666;
+  font-style: italic;
+}
+
+/* Tables */
+.docs-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.25rem;
+}
+
+.docs-content th,
+.docs-content td {
+  border: 1px solid var(--doc-border);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.docs-content th {
+  background: var(--doc-code-bg);
+  font-weight: 600;
+}
+
+/* Horizontal Rule */
+.docs-content hr {
+  border: none;
+  border-top: 1px solid var(--doc-border);
+  margin: 2rem 0;
+}
+
+/* Images */
+.docs-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem 0;
+}
+
+/* Mermaid Diagrams */
+.mermaid {
+  background: transparent;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+:root.dark-theme .mermaid .node rect,
+:root.dark-theme .mermaid .node circle,
+:root.dark-theme .mermaid .node ellipse,
+:root.dark-theme .mermaid .node polygon {
+  fill: #1a1a1a;
+  stroke: #4a9eff;
+}
+
+:root.dark-theme .mermaid .nodeLabel,
+:root.dark-theme .mermaid .edgeLabel {
+  color: #e0e0e0;
+}
+
+:root.dark-theme .mermaid .edgePath .path {
+  stroke: #4a9eff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .docs-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .docs-title {
+    font-size: 1.5rem;
+  }
+
+  .docs-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .docs-content h2 {
+    font-size: 1.35rem;
+  }
+
+  .docs-content h3 {
+    font-size: 1.15rem;
+  }
+}

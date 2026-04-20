@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LCH Color Palette Generator</title>
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#bc1b96">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="LCH Palette">
+  <meta name="description" content="Generate harmonious color palettes using LCH color space with hue shifting">
+  
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-128x128.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-72x72.png">
+  
+  <link rel="stylesheet" href="style/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="app-header">
+      <div class="header-content">
+        <h1>Light/Chroma/Hue <br> — Color Palette Generator</h1>
+        <div class="menu-wrapper">
+          <button class="hamburger-menu" onclick="toggleMenu(event)" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <nav class="dropdown-menu" id="dropdownMenu">
+            <a href="docs.html?page=readme" class="menu-item">📚 Documentation</a>
+          </nav>
+        </div>
+      </div>
+      <p class="subtitle">Generate harmonious color palettes using LCH color space with hue shifting — ddelcourt 2026</p>
+      <p class="subtitle">Based on <a href="https://tympanus.net/codrops/2021/12/07/coloring-with-code-a-programmatic-approach-to-design/" target="_blank" rel="noopener noreferrer">this article from George Francis</a></p>
+    </div>
+
+    <div id="paletteContainer"></div>
+
+    <div class="sticky-header">
+      <div class="controls">
+        <div class="controls-grid">
+          <!-- Base Color - spans 2 rows -->
+          <div class="control-group base-color-group">
+            <label>Base Color</label>
+            <input type="color" id="baseColor" value="#bc1b96">
+          </div>
+          
+          <!-- Row 1 - Hue Step, Lightness controls, Swap button -->
+          <div class="control-group">
+            <label>Hue Step (degrees)</label>
+            <div class="slider-container">
+              <input type="range" id="hueStep" value="15" min="1" max="45" step="1">
+              <span class="slider-value">15</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>Initial Lightness</label>
+            <div class="slider-container">
+              <input type="range" id="minLightness" value="10" min="0" max="100" step="5">
+              <span class="slider-value">10</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>End Lightness</label>
+            <div class="slider-container">
+              <input type="range" id="maxLightness" value="75" min="0" max="100" step="5">
+              <span class="slider-value">75</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>&nbsp;</label>
+            <button class="swap-button" onclick="swapLightness()">⇅ Swap Lightness</button>
+          </div>
+          
+          <!-- Row 2 - Undertones controls, Swap button -->
+          <div class="control-group">
+            <label>Initial Undertones</label>
+            <div class="slider-container">
+              <input type="range" id="leftWarmth" value="0" min="-30" max="30" step="1">
+              <span class="slider-value">0</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>End Undertones</label>
+            <div class="slider-container">
+              <input type="range" id="rightWarmth" value="0" min="-30" max="30" step="1">
+              <span class="slider-value">0</span>
+            </div>
+          </div>
+          <div class="control-group empty-spacer">
+            <!-- Empty spacer to align swap button -->
+          </div>
+          <div class="control-group">
+            <label>&nbsp;</label>
+            <button class="swap-button" onclick="swapWarmth()">⇄ Swap Undertones</button>
+          </div>
+        </div>
+        <div class="button-row">
+          <button class="randomize-color-button" onclick="randomizeColor()">Randomize Color</button>
+          <button class="randomize-button" onclick="randomizeAll()">Randomize All</button>
+          <button class="theme-toggle-inline" onclick="toggleTheme()">Light Mode</button>
+        </div>
+        <div class="button-row">
+          <button class="share-button" onclick="copyShareLink()">Share Link</button>
+          <button class="save-button" onclick="downloadJSON()">Save</button>
+          <button class="load-button" onclick="loadJSON()">Load</button>
+        </div>
+      </div>
+
+      <div class="presentation-tabs">
+        <button class="tab-button active" onclick="switchTab('bars')">Bars</button>
+        <button class="tab-button" onclick="switchTab('gradients')">Gradients</button>
+        <button class="tab-button" onclick="switchTab('circles')">Dots</button>
+      </div>
+    </div>
+
+    <div class="combinations-section">
+
+      <!-- Bars Presentation (Original) -->
+      <div id="bars-mode" class="presentation-mode active">
+        <div class="combinations-container">
+          <div class="combinations-header">
+            <div class="combinations-title">2 Color Combinations</div>
+            <button class="shuffle-button" onclick="shuffleTwoCombinations()">Shuffle</button>
+          </div>
+          <div id="twoCombinations" class="combinations-grid two-colors"></div>
+        </div>
+
+        <div class="combinations-container">
+          <div class="combinations-header">
+            <div class="combinations-title">3 Color Combinations</div>
+            <button class="shuffle-button" onclick="shuffleThreeCombinations()">Shuffle</button>
+          </div>
+          <div id="threeCombinations" class="combinations-grid three-colors"></div>
+        </div>
+
+        <div class="combinations-container">
+          <div class="combinations-header">
+            <div class="combinations-title">4 Color Combinations</div>
+            <button class="shuffle-button" onclick="shuffleFourCombinations()">Shuffle</button>
+          </div>
+          <div id="fourCombinations" class="combinations-grid four-colors"></div>
+        </div>
+      </div>
+
+      <!-- Circles Presentation -->
+      <div id="circles-mode" class="presentation-mode">
+        <div class="combinations-container">
+          <div class="combinations-header">
+            <div class="combinations-title">2 Color Combinations</div>
+            <button class="shuffle-button" onclick="shuffleTwoCombinations()">Shuffle</button>
+          </div>
+          <div id="twoCombinationsCircles" class="combinations-grid two-colors"></div>
+        </div>
+
+        <div class="combinations-container">
+          <div class="combinations-header">
+            <div class="combinations-title">3 Color Combinations</div>
+            <button class="shuffle-button" onclick="shuffleThreeCombinations()">Shuffle</button>
+          </div>
+          <div id="threeCombinationsCircles" class="combinations-grid three-colors"></div>
+        </div>
+
+        <div class="combinations-container">
+          <div class="combinations-header">
+            <div class="combinations-title">4 Color Combinations</div>
+            <button class="shuffle-button" onclick="shuffleFourCombinations()">Shuffle</button>
+          </div>
+          <div id="fourCombinationsCircles" class="combinations-grid four-colors"></div>
+        </div>
+      </div>
+
+      <!-- Gradients Presentation -->
+      <div id="gradients-mode" class="presentation-mode">
+        <div class="combinations-container">
+          <div class="combinations-header">
+            <div class="combinations-title">2 Color Combinations</div>
+            <button class="shuffle-button" onclick="shuffleTwoCombinations()">Shuffle</button>
+          </div>
+          <div id="twoCombinationsGradients" class="combinations-grid two-colors"></div>
+        </div>
+
+        <div class="combinations-container">
+          <div class="combinations-header">
+            <div class="combinations-title">3 Color Combinations</div>
+            <button class="shuffle-button" onclick="shuffleThreeCombinations()">Shuffle</button>
+          </div>
+          <div id="threeCombinationsGradients" class="combinations-grid three-colors"></div>
+        </div>
+
+        <div class="combinations-container">
+          <div class="combinations-header">
+            <div class="combinations-title">4 Color Combinations</div>
+            <button class="shuffle-button" onclick="shuffleFourCombinations()">Shuffle</button>
+          </div>
+          <div id="fourCombinationsGradients" class="combinations-grid four-colors"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="copiedNotification" class="copied-notification">Copied to clipboard!</div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/config.js"></script>
+  <script src="js/colorUtils.js"></script>
+  <script src="js/paletteGenerator.js"></script>
+  <script src="js/combinations.js"></script>
+  <script src="js/uiControls.js"></script>
+  <script src="js/persistence.js"></script>
+  <script src="js/app.js"></script>
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('ServiceWorker registration successful:', registration.scope);
+          })
+          .catch((error) => {
+            console.log('ServiceWorker registration failed:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>

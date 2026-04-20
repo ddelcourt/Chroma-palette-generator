@@ -1,0 +1,17 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#bc1b96" rx="80"/>
+  
+  <!-- Simple palette icon concept - customize this! -->
+  <g>
+    <!-- Color circles representing palette -->
+    <circle cx="160" cy="256" r="60" fill="#FFD700" opacity="0.9"/>
+    <circle cx="256" cy="180" r="60" fill="#FF6B6B" opacity="0.9"/>
+    <circle cx="352" cy="256" r="60" fill="#4ECDC4" opacity="0.9"/>
+    <circle cx="256" cy="332" r="60" fill="#95E1D3" opacity="0.9"/>
+  </g>
+  
+  <!-- Text (optional - remove if you prefer icon only) -->
+  <text x="256" y="440" font-family="Arial, sans-serif" font-size="48" font-weight="bold" 
+        fill="white" text-anchor="middle">LCH</text>
+</svg>

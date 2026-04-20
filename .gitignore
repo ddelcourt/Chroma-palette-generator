@@ -1,0 +1,49 @@
+# Ignore system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignore editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Ignore backup files
+backup/
+*.backup
+*.bak
+*.old
+
+# Ignore log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore node_modules (if you add npm in future)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Ignore build outputs (if you add a build process)
+dist/
+build/
+.cache/
+
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore temporary files
+tmp/
+temp/
+*.tmp
