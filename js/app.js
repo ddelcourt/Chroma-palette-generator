@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
   
   if (savedTheme === 'light') {
     root.classList.add('light-theme');
-    themeButton.textContent = '☀️ Dark Mode';
+    themeButton.textContent = 'Dark Mode';
   }
   
   // Check if there's a shared URL

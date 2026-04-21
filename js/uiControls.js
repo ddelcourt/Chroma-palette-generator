@@ -194,11 +194,11 @@ function toggleTheme() {
   
   if (root.classList.contains('light-theme')) {
     root.classList.remove('light-theme');
-    themeButton.textContent = '🌙 Light Mode';
+    themeButton.textContent = 'Light Mode';
     localStorage.setItem('theme', 'dark');
   } else {
     root.classList.add('light-theme');
-    themeButton.textContent = '☀️ Dark Mode';
+    themeButton.textContent = 'Dark Mode';
     localStorage.setItem('theme', 'light');
   }
 }
